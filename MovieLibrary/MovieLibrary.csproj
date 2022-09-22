@@ -1,0 +1,79 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="obj\Debug\net5.0\.NETCoreApp,Version=v5.0.AssemblyAttributes.cs" />
+    <Compile Include="obj\Debug\net5.0\MovieLibrary.AssemblyInfo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="bin\Debug\net5.0\data\.vs\VSWorkspaceState.json" />
+    <Content Include="bin\Debug\net5.0\MovieLibrary.deps.json" />
+    <Content Include="bin\Debug\net5.0\MovieLibrary.runtimeconfig.dev.json" />
+    <Content Include="bin\Debug\net5.0\MovieLibrary.runtimeconfig.json" />
+    <Content Include="obj\Debug\net5.0\MovieLibrary.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\MovieLibrary.csproj.nuget.dgspec.json" />
+    <Content Include="obj\project.assets.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net5.0\data\.vs\slnx.sqlite" />
+    <None Include="bin\Debug\net5.0\data\movies.csv" />
+    <None Include="bin\Debug\net5.0\Microsoft.Extensions.Configuration.Abstractions.dll" />
+    <None Include="bin\Debug\net5.0\Microsoft.Extensions.Configuration.Binder.dll" />
+    <None Include="bin\Debug\net5.0\Microsoft.Extensions.Configuration.dll" />
+    <None Include="bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll" />
+    <None Include="bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll" />
+    <None Include="bin\Debug\net5.0\Microsoft.Extensions.Logging.Abstractions.dll" />
+    <None Include="bin\Debug\net5.0\Microsoft.Extensions.Logging.Configuration.dll" />
+    <None Include="bin\Debug\net5.0\Microsoft.Extensions.Logging.Console.dll" />
+    <None Include="bin\Debug\net5.0\Microsoft.Extensions.Logging.dll" />
+    <None Include="bin\Debug\net5.0\Microsoft.Extensions.Options.ConfigurationExtensions.dll" />
+    <None Include="bin\Debug\net5.0\Microsoft.Extensions.Options.dll" />
+    <None Include="bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll" />
+    <None Include="bin\Debug\net5.0\MovieLibrary.dll" />
+    <None Include="bin\Debug\net5.0\MovieLibrary.exe" />
+    <None Include="bin\Debug\net5.0\MovieLibrary.pdb" />
+    <None Include="bin\Debug\net5.0\NLog.dll" />
+    <None Include="bin\Debug\net5.0\NLog.Extensions.Logging.dll" />
+    <None Include="bin\Debug\net5.0\NLog.Web.dll" />
+    <None Include="bin\Debug\net5.0\ref\MovieLibrary.dll" />
+    <None Include="bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll" />
+    <None Include="bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll" />
+    <None Include="bin\Debug\net5.0\System.Text.Encodings.Web.dll" />
+    <None Include="bin\Debug\net5.0\System.Text.Json.dll" />
+    <None Include="obj\Debug\net5.0\apphost.exe" />
+    <None Include="obj\Debug\net5.0\MovieLibrary.AssemblyInfoInputs.cache" />
+    <None Include="obj\Debug\net5.0\MovieLibrary.assets.cache" />
+    <None Include="obj\Debug\net5.0\MovieLibrary.csproj.AssemblyReference.cache" />
+    <None Include="obj\Debug\net5.0\MovieLibrary.csproj.CopyComplete" />
+    <None Include="obj\Debug\net5.0\MovieLibrary.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\net5.0\MovieLibrary.dll" />
+    <None Include="obj\Debug\net5.0\MovieLibrary.GeneratedMSBuildEditorConfig.editorconfig" />
+    <None Include="obj\Debug\net5.0\MovieLibrary.genruntimeconfig.cache" />
+    <None Include="obj\Debug\net5.0\MovieLibrary.pdb" />
+    <None Include="obj\Debug\net5.0\ref\MovieLibrary.dll" />
+    <None Include="obj\MovieLibrary.csproj.nuget.g.props" />
+    <None Include="obj\MovieLibrary.csproj.nuget.g.targets" />
+    <None Include="obj\project.nuget.cache" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="6.0.0" />
+    <PackageReference Include="NLog" Version="5.0.4" />
+    <PackageReference Include="NLog.Extensions.Logging" Version="5.0.4" />
+    <PackageReference Include="NLog.Web" Version="5.1.4" />
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="bin\Debug\net5.0\data\.vs\data\v16\" />
+  </ItemGroup>
+
+</Project>
