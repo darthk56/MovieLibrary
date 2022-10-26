@@ -195,6 +195,9 @@
         }
       },
       "NLog.Web/5.1.4": {
+        "dependencies": {
+          "NLog": "5.0.4"
+        },
         "runtime": {
           "lib/net46/NLog.Web.dll": {
             "assemblyVersion": "5.0.0.0",
