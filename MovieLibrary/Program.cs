@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging.Console;
+using Microsoft.EntityFrameworkCore;
 using MovieLibraryEntities.Context;
 using MovieLibraryEntities.Models;
 
@@ -77,7 +78,7 @@ namespace MovieLibrary
                         if (exists == 0)
                         {
                             Console.WriteLine("Enter genre:");
-                            string genre = Console.ReadLine();
+                            string genreName = Console.ReadLine();
                             var id = 0;
                             foreach (var m in db.Movies)
                             {
@@ -86,13 +87,18 @@ namespace MovieLibrary
                             Console.Write("Enter a release date (e.g. 10/22/1987): ");
                             DateTime inputtedDate = DateTime.Parse(Console.ReadLine());
                             var movie = new Movie();
+                            var genre = new Genre();
                             var genree = new MovieGenre();
+                            genre.Name = genreName;
                             genree.Movie = movie;
-                            genree.Id = (int)movie.Id;
+                            genree.Genre = genre;
                             movie.Title = Title;
                             movie.ReleaseDate = inputtedDate;
-                            db.Add(genree);
                             db.Add(movie);
+                            db.Add(genre);
+                            db.Add(genree);
+
+
                             db.SaveChanges();
                         }
                     }
@@ -115,7 +121,7 @@ namespace MovieLibrary
                                 removed++;
                             }
                         }
-                        db.Movies.Remove((Movie)db.Movies.Where(x => x.Id == removeID).FirstOrDefault());
+                        db.Movies.Remove(db.Movies.Where(x => x.Id == removeID).FirstOrDefault());
                         db.SaveChanges();
                         if (removed == 0)
                         {
@@ -131,9 +137,10 @@ namespace MovieLibrary
 
                     Console.WriteLine("Enter ID of movie to edit:");
                     int id = Convert.ToInt32(Console.ReadLine());
+
                     using (var db = new MovieContext())
                     {
-                        var movieEdit = (Movie)db.Movies.Where(x => x.Id == id).FirstOrDefault();
+                        var movieEdit = (Movie)db.Movies.Include(x => x.MovieGenres).ThenInclude(x => x.Genre).Where(x => x.Id == id).FirstOrDefault();
                         int exists = 0;
                         Console.WriteLine("Enter new title:");
                         string newTitle = Console.ReadLine();
@@ -153,14 +160,64 @@ namespace MovieLibrary
                             Console.Write("Enter a new release date (e.g. 10/22/1987): ");
                             DateTime inputtedDate = DateTime.Parse(Console.ReadLine());
                             movieEdit.ReleaseDate = inputtedDate;
-                            Console.WriteLine("Enter new genre:");
-                            string newGenre = Console.ReadLine();
-                            movieEdit.Title = newTitle;
-                            MovieGenre genree = new MovieGenre();
-                            genree.Id = (int)movieEdit.Id;
-                            genree.Movie = movieEdit;
-                            db.Add(genree);
-                            db.SaveChanges();
+                            foreach (var mg in movieEdit.MovieGenres)
+                            {
+                                Console.WriteLine(mg.Genre.Name);
+                            }
+                            int loopVar1 = 0;
+                            var genreList = db.Genres.Select(x => x.Name).ToList();
+
+                            do
+                            {
+                                Console.WriteLine("Enter the genre name to edit");
+                                string newGenre = Console.ReadLine();
+                                int genreCount = 0;
+                                foreach (var mg in movieEdit.MovieGenres)
+                                {
+
+                                    if (mg.Genre.Name == newGenre)
+                                    {
+
+                                        Console.WriteLine("Enter new name for genre");
+                                        string newGenreName = Console.ReadLine();
+
+                                        int loopVar2 = 0;
+                                        do
+                                        {
+                                            if (genreList.Contains(newGenreName) == true)
+                                            {
+                                                var genreToUpdate = movieEdit.MovieGenres.FirstOrDefault(x => x.Genre.Name == newGenre);
+                                                genreToUpdate.Genre.Name = newGenreName;
+                                                loopVar2 = 1;
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine("Sorry thats not a valid genre, try again");
+                                            }
+                                        } while (loopVar2 == 0);
+
+
+                                        movieEdit.Title = newTitle;
+
+
+
+                                        db.SaveChanges();
+
+                                        loopVar1 = 1;
+                                    }
+                                    else
+                                    {
+                                        genreCount++;
+                                    }
+                                }
+                                if (genreCount == movieEdit.MovieGenres.Count())
+                                {
+                                    Console.WriteLine("Sorry this movie doesnt have that genre, try again");
+                                }
+
+                            } while (loopVar1 == 0);
+
+
                         }
 
 
